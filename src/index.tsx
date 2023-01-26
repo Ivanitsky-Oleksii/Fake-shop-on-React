@@ -1,37 +1,26 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 
-// const h1 = React.createElement("h1",{id: "title"}, "Hello React")
 
-// jsx
-const h1 = <h1 id="title" className="dfdf">Hello React.js</h1>
+const Title = () => {
+  return <h1>Hello App.js</h1>
+}
 
-let a = 50
-let b = "Hello"
-
-
-const list = <ul>
-  <li>list item 1 {a}</li>
-  <li>list item 4{b}</li>
-  <li>list item 5</li>
-</ul>
-
-
-// const list = React.createElement(
-//   "ul",
-//   null,
-//   React.createElement("li", null, "list item 1"),
-//   React.createElement("li", null, "list item 2"),
-//   React.createElement("li", null, "list item 3"),
-//   React.createElement("li", null, "list item 4")
-// )
-
-const content = (
-  <div>
-    {h1}
-    {list}
-  </div>
-)
+const Content = ()=>{
+  return <React.Fragment>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, dignissimos! Exercitationem amet quisquam cupiditate. Vitae ab deserunt tempore enim doloribus, praesentium sunt minus placeat consequuntur nesciunt cum, aliquid recusandae unde!</p>
+  
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, magni nam, iure ea officia fugit illo incidunt numquam repellat impedit est nihil consectetur ipsum eveniet dolorem tempora eos doloremque aut.</p></React.Fragment>
+}
+function App(){
+  return (
+  <>
+  <Title/>
+  <Content/>
+</>)
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
-root.render(<React.StrictMode>{content}</React.StrictMode>)
+root.render(<React.StrictMode>
+<App/>
+  </React.StrictMode>)
