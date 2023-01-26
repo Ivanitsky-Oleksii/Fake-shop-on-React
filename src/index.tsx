@@ -4,11 +4,15 @@ import ReactDOM from 'react-dom/client'
 // const h1 = React.createElement("h1",{id: "title"}, "Hello React")
 
 // jsx
-const h1 = <h1 id="title">Hello React.js</h1>
+const h1 = <h1 id="title" className="dfdf">Hello React.js</h1>
+
+let a = 50
+let b = "Hello"
+
 
 const list = <ul>
-  <li>list item 1</li>
-  <li>list item 4</li>
+  <li>list item 1 {a}</li>
+  <li>list item 4{b}</li>
   <li>list item 5</li>
 </ul>
 
