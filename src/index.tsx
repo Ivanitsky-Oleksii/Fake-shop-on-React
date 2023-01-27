@@ -1,15 +1,8 @@
 import { type } from '@testing-library/user-event/dist/type'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import Content from './Content'
-interface ITitleProps{
-  text: string
-}
-
-
-const Title = (props: ITitleProps) => {
-  return <h1>Hello {props.text}</h1>
-}
+import {Content} from './Content'
+import Title from './Title'
 
 
 function App(){
