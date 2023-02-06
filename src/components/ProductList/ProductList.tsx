@@ -1,8 +1,19 @@
 import { Grid, Typography } from "@mui/material"
 import ProductListItem from "./ProductListItem"
+import productsArray from "utils/productsArray"
 
 
 type Props = {}
+
+type ProductProps = {
+    title: string
+    descriptions: string
+    type: string
+    capacity: string
+    price:number}
+
+
+
 const ProductList = (props: Props) => {
 return (
     <>
@@ -11,46 +22,17 @@ return (
         </Typography>
 
         <Grid container spacing={3}>
-            <Grid item xs={12} sm={6} md={4}>
-                {''}
-                <ProductListItem
-                    title="iPhone 14 Pro"
-                    descriptions="This is iPhone 14 Pro"
-                    type="phone"
-                    capacity="256"
-                    price={1200}
-                />
-            </Grid>
-            <Grid item xs={12} sm={6} md={4}>
-                {''}
-                <ProductListItem
-                    title="iPhone 13 Pro"
-                    descriptions="This is iPhone 13 Pro"
-                    type="phone"
-                    capacity="256"
-                    price={1000}
-                />
-            </Grid>
-            <Grid item xs={12} sm={6} md={4}>
-                {''}
-                <ProductListItem
-                    title="iPhone 12 Pro"
-                    descriptions="This is iPhone 12 Pro"
-                    type="phone"
-                    capacity="256"
-                    price={900}
-                />
-            </Grid>
-            <Grid item xs={12} sm={6} md={4}>
-                {''}
-                <ProductListItem
-                    title="iPhone 11 Pro"
-                    descriptions="This is iPhone 11 Pro"
-                    type="phone"
-                    capacity="256"
-                    price={700}
-                />
-            </Grid>
+            {productsArray.map((product: ProductProps) => (
+                <Grid item xs={12} sm={6} md={4}>
+                    <ProductListItem
+                        title={product.title}
+                        descriptions={product.descriptions}
+                        type={product.type}
+                        capacity={product.capacity}
+                        price={product.price}
+                    />
+                </Grid>
+            ))}
         </Grid>
     </>
 )
