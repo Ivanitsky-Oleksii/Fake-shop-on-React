@@ -17,7 +17,7 @@ return (
                     title="iPhone 14 Pro"
                     descriptions="This is iPhone 14 Pro"
                     type="phone"
-                    capacity="256Gb"
+                    capacity="256"
                     price={1200}
                 />
             </Grid>
@@ -27,7 +27,7 @@ return (
                     title="iPhone 13 Pro"
                     descriptions="This is iPhone 13 Pro"
                     type="phone"
-                    capacity="256Gb"
+                    capacity="256"
                     price={1000}
                 />
             </Grid>
@@ -37,7 +37,7 @@ return (
                     title="iPhone 12 Pro"
                     descriptions="This is iPhone 12 Pro"
                     type="phone"
-                    capacity="256Gb"
+                    capacity="256"
                     price={900}
                 />
             </Grid>
@@ -47,7 +47,7 @@ return (
                     title="iPhone 11 Pro"
                     descriptions="This is iPhone 11 Pro"
                     type="phone"
-                    capacity="256Gb"
+                    capacity="256"
                     price={700}
                 />
             </Grid>
