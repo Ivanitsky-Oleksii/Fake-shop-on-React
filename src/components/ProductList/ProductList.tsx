@@ -22,14 +22,14 @@ return (
         </Typography>
 
         <Grid container spacing={3}>
-            {productsArray.map((product: ProductProps) => (
+            {productsArray.map(({title,descriptions,type,capacity,price}: ProductProps) => (
                 <Grid item xs={12} sm={6} md={4}>
                     <ProductListItem
-                        title={product.title}
-                        descriptions={product.descriptions}
-                        type={product.type}
-                        capacity={product.capacity}
-                        price={product.price}
+                        title={title}
+                        descriptions={descriptions}
+                        type={type}
+                        capacity={capacity}
+                        price={price}
                     />
                 </Grid>
             ))}
