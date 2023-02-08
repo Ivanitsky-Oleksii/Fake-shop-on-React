@@ -13,8 +13,8 @@ return (
         </Typography>
 
         <Grid container spacing={3}>
-            {productsArray.map(({title,descriptions,type,capacity,price},i) => (
-                <Grid item xs={12} sm={6} md={4} key={i}>
+            {productsArray.map(({id,title,descriptions,type,capacity,price}) => (
+                <Grid item xs={12} sm={6} md={4} key={id}>
                     <ProductListItem
                         title={title}
                         descriptions={descriptions}
