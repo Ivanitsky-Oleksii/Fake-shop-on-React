@@ -1,6 +1,7 @@
 import {Card, CardContent, Button,TextField, CardActions} from '@mui/material'
 import {Component} from 'react'
 import './ProductListItem.scss'
+import { useState } from 'react'
 
 type Props = {
     title: string
@@ -10,47 +11,17 @@ type Props = {
     price:number
     image:string
 }
-
-type State ={
-    count:number
-    color:string
-}
-
-class ProductListItem extends Component<Props, State> {
-
-state = {
-    count:1,
-    color:"green",
-}
-
-onIncrementClick=() => {
-    this.setState((prevState:State) => ({
-        count: prevState.count + 1,
-    })
-    )
-}
-onDecrementClick=() => {
-    this.setState((prevState:State) => ({
-        count: prevState.count -1,
-    })
-    )
-}
-
-changeColor=() =>{
-    this.setState((prevState:State) => ({
-    color:prevState.color === "green" ? "red" : "green",
-    }))
-}
-
-    render (){
-        const{
+const ProductListItem =({
             title,
             descriptions,
             type,
             capacity,
             price,
             image,
-        } = this.props;
+}: Props) => {
+
+const [count,setCount] = useState<number>(1)
+
     return (
     <Card variant="outlined" className="product">
         <CardContent>
@@ -59,14 +30,11 @@ changeColor=() =>{
             <div className="product-desc">{descriptions}</div>
             <div className="product-features">Type:{type}</div>
             <div className="product-features">Capacity:{capacity}Gb</div>
-            <p>Color:{''}
-            <span className={this.state.color}>{this.state.color}</span></p>
-            <button onClick={this.changeColor}>Change color</button>
             <div className="product-price">{price}$</div>
             <div className='product-quantity'>
-                <Button variant='outlined' onClick={this.onDecrementClick}>-</Button>
-                <TextField size='small' value={this.state.count} />
-                <Button variant='outlined' onClick={() => this.onIncrementClick ()}>+</Button>
+                <Button variant='outlined' onClick={() => setCount (count - 1)}>-</Button>
+                <TextField size='small' value={count} />
+                <Button variant='outlined' onClick={() => setCount (count + 1)} >+</Button>
             </div>
         </CardContent>
         <CardActions className="product-btn-wrap">
@@ -74,5 +42,5 @@ changeColor=() =>{
         </CardActions>
     </Card>
 )
-}}
+}
 export default ProductListItem
