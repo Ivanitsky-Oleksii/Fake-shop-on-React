@@ -59,7 +59,8 @@ changeColor=() =>{
             <div className="product-desc">{descriptions}</div>
             <div className="product-features">Type:{type}</div>
             <div className="product-features">Capacity:{capacity}Gb</div>
-            <p>Color:{this.state.color}</p>
+            <p>Color:{''}
+            <span className={this.state.color}>{this.state.color}</span></p>
             <button onClick={this.changeColor}>Change color</button>
             <div className="product-price">{price}$</div>
             <div className='product-quantity'>
