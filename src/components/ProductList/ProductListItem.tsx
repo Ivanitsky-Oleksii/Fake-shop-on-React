@@ -37,9 +37,18 @@ onDecrementClick=() => {
 }
 
 changeColor=() =>{
-    this.setState({
-        color:"red",
-    })
+    this.setState((prevState:State) => {
+        if (prevState.color === "green") {
+        return {
+            color:"red",
+        } 
+    }   else {
+            return {
+                color:"green",
+            }
+        }
+    
+    } )
 }
 
     render (){
