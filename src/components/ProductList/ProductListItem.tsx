@@ -13,17 +13,19 @@ type Props = {
 
 type State ={
     count:number
+    color:string
 }
 
 class ProductListItem extends Component<Props, State> {
 
 state = {
     count:1,
+    color:"green",
 }
 
-onIncrementClick=(num:number) => {
+onIncrementClick=() => {
     this.setState((prevState:State) => ({
-        count: prevState.count + num,
+        count: prevState.count + 1,
     })
     )
 }
@@ -34,6 +36,11 @@ onDecrementClick=() => {
     )
 }
 
+changeColor=() =>{
+    this.setState({
+        color:"red",
+    })
+}
 
     render (){
         const{
@@ -52,11 +59,13 @@ onDecrementClick=() => {
             <div className="product-desc">{descriptions}</div>
             <div className="product-features">Type:{type}</div>
             <div className="product-features">Capacity:{capacity}Gb</div>
+            <p>Color:{this.state.color}</p>
+            <button onClick={this.changeColor}>Change color</button>
             <div className="product-price">{price}$</div>
             <div className='product-quantity'>
                 <Button variant='outlined' onClick={this.onDecrementClick}>-</Button>
                 <TextField size='small' value={this.state.count} />
-                <Button variant='outlined' onClick={() => this.onIncrementClick (3)}>+</Button>
+                <Button variant='outlined' onClick={() => this.onIncrementClick ()}>+</Button>
             </div>
         </CardContent>
         <CardActions className="product-btn-wrap">
