@@ -26,9 +26,8 @@ const onIncrement = () => {
     setCount (count + 1)
 }
 const onDecrement = () => {
-if (count > 1) {
+
     setCount (count -1)
-}
 }
 
     return (
@@ -41,9 +40,9 @@ if (count > 1) {
             <div className="product-features">Capacity:{capacity}Gb</div>
             <div className="product-price">{price}$</div>
             <div className='product-quantity'>
-                <Button variant='outlined' onClick={() => onDecrement() }>-</Button>
+                <Button variant='outlined' onClick={() => onDecrement() } disabled={count <=1}>-</Button>
                 <TextField size='small' value={count}  />
-                <Button variant='outlined' onClick={() => onIncrement() } >+</Button>
+                <Button variant='outlined' onClick={() => onIncrement() } disabled={count >=10}>+</Button>
             </div>
         </CardContent>
         <CardActions className="product-btn-wrap">
