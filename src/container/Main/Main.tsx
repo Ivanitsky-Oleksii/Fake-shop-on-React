@@ -11,7 +11,7 @@ return (
     sx={{
         padding: '60px 0',
     }}>
-    <Home />
+    <Home  />
     </Container>
 )
 }
