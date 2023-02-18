@@ -18,6 +18,7 @@ return (
             {productsArray.map(({id,title,descriptions,type,capacity,price,image}) => (
                 <Grid item xs={12} sm={6} md={4} key={id}>
                     <ProductListItem 
+                        id={id}
                         addProductToCart={addProductToCart}
                         title={title}
                         descriptions={descriptions}
