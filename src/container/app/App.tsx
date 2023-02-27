@@ -31,6 +31,15 @@ const removeProductFromCart = (id:number) => {
   setProductsInCart((prevState)=> omit (prevState, [id]))
 } 
 
+const changeProductsQuantity = (id:number,count:number) => {
+  setProductsInCart((prevState)=>({
+    ...prevState,
+    [id]:count,
+  }))
+
+
+}
+
   return (
     <StyledEngineProvider injectFirst>
     <CssBaseline/>
@@ -40,9 +49,11 @@ const removeProductFromCart = (id:number) => {
     }}>
     <Routes>
       <Route path='/' element={<Home addProductToCart={addProductToCart} />}/>
-      <Route path="cart" element={<CartPage 
+      <Route path="cart" element={
+      <CartPage 
       productsInCart={productsInCart}
       removeProductFromCart={removeProductFromCart}
+      changeProductsQuantity={changeProductsQuantity}
       />}/>
     </Routes>
     </Container>

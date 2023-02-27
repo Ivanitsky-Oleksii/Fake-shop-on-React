@@ -10,9 +10,12 @@ productsObject?:{
 }
 CartItem?:any
 removeProductFromCart?:(id:number)=>void
+changeProductsQuantity?:(id:number,count:number)=>void
 }
 
-const CartProductList = ({productsInCart,productsObject = getProductsObject(productsArray),CartItem = CartProductListItem,removeProductFromCart}: Props) => {
+const CartProductList = ({
+    productsInCart,productsObject = getProductsObject(productsArray),
+    CartItem = CartProductListItem,removeProductFromCart,changeProductsQuantity}: Props) => {
     return (
         <>
         {Object.keys(productsInCart).map((productId) => (
@@ -21,6 +24,7 @@ key={productId}
 product={productsObject[parseInt(productId)]}
 productCount ={productsInCart[parseInt(productId)]}
 removeProductFromCart={removeProductFromCart}
+changeProductsQuantity={changeProductsQuantity}
 />
         
         ))}
