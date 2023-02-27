@@ -8,11 +8,12 @@ type Props = {
     productsInCart:{
         [id:number]:number
     }
+    removeProductFromCart:(id:number)=>void
 productsObject?:{
     [id:number] : Product
 }
 }
-const CartPage = ({productsInCart,productsObject = getProductsObject(productsArray)}: Props) => {
+const CartPage = ({productsInCart,removeProductFromCart}: Props) => {
     return(
 <div>
 <Typography variant="h4" component="h1" sx={{
@@ -20,7 +21,11 @@ const CartPage = ({productsInCart,productsObject = getProductsObject(productsArr
 }}>     Cart
         </Typography>  
         <Grid container spacing={4}>
-        <CartProductList productsInCart={productsInCart} CartItem={CartProductListItemExtended}/>
+        <CartProductList 
+        productsInCart={productsInCart} 
+        CartItem={CartProductListItemExtended}
+        removeProductFromCart={removeProductFromCart}
+        />
         </Grid> 
         <CartTotal productsInCart={productsInCart}/>
 
