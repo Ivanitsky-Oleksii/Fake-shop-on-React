@@ -7,6 +7,8 @@ import {Route,Routes} from 'react-router-dom'
 import {Container} from '@mui/system'
 import Home from "pages/Home/Home";
 import CartPage from "pages/Cart/CartPage";
+import { Button } from "@mui/material";
+import {omit} from 'lodash'
 
 type Props={}
 
@@ -15,8 +17,8 @@ type ProductsInCart = {
 
 const App = (props: Props) => {
 const [productsInCart, setProductsInCart] = useState<ProductsInCart>({
-// 1:5,
-2:5,
+1:1,
+2:1,
 })
 
 const addProductToCart = (id:number,count:number) => {
@@ -25,10 +27,15 @@ const addProductToCart = (id:number,count:number) => {
     [id]: (prevState[id] || 0) + count,
   }))
 }
+const removeProductFromCart = (id:number) => {
+  setProductsInCart((prevState)=> omit (prevState, [id]))
+} 
+
   return (
     <StyledEngineProvider injectFirst>
     <CssBaseline/>
     <Header productsInCart={productsInCart} />
+    <button onClick={()=> removeProductFromCart(1)}>Delete product</button>
     <Container  sx={{
         padding: '60px 0',
     }}>
