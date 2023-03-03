@@ -1,9 +1,13 @@
-import { Typography,Card, CardContent } from "@mui/material"
+import { Typography,Card, CardContent, TextField, TextareaAutosize, Button } from "@mui/material"
 import { useState } from "react"
 
 type Props = {
 }
 type Reviews={
+    name:string
+    text:string
+}
+type Review={
     name:string
     text:string
 }
@@ -17,8 +21,36 @@ const Reviews = (props: Props) => {
         },
     ]
     const [reviews,setReviews]=useState<Reviews[]>(arrReviews)
-
-
+    const [newReview,setNewReview]=useState<Review>({
+        name:"",
+        text:"",
+    })
+    const handelName=(e:React.ChangeEvent<HTMLInputElement>) => {
+setNewReview((prevState)=>({
+    ...prevState,
+    name:e.target.value,
+}))
+}
+const handelText=(e:React.ChangeEvent<HTMLTextAreaElement>) => {
+    setNewReview((prevState)=>({
+        ...prevState,
+        text:e.target.value,
+    }))
+    }
+const onSend = (e:React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    if (newReview.name ==="" || newReview.text ==="" ){
+    alert("All fields are required!")}
+    else{
+        setNewReview({
+            name:"",
+            text:"",
+        })
+        setReviews((prevState)=> {
+            return [...prevState,newReview]
+        })
+    }
+}
 
     return (
         <>
@@ -27,8 +59,8 @@ const Reviews = (props: Props) => {
         </Typography>
         <div>
             {
-                reviews.map((item)=>(
-                <Card variant="outlined" sx={{margin:"20px 0"}} >
+                reviews.map((item,i)=>(
+                <Card variant="outlined" sx={{margin:"20px 0"}} key={i}>
                 <CardContent>
                 <div>{item.name}:</div>
                 <div>{item.text}</div>
@@ -36,6 +68,20 @@ const Reviews = (props: Props) => {
                 </Card>
             ))}
         </div>
+<form onSubmit={onSend}>
+    <h3>Please leave a reviews</h3>
+    <div>
+        <TextField label="Name" value={newReview.name} onChange={handelName}/>
+    </div>
+    <br />
+    <div>
+        <TextareaAutosize minRows={6} placeholder="Text" style={{width:224}} value={newReview.text} onChange={handelText}/>
+    </div>
+    <Button variant="contained" type="submit">Send</Button>
+    </form>
+
+
+
         </>
     )
 }
