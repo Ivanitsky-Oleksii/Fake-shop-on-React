@@ -1,6 +1,7 @@
 import Button from '@mui/material/Button'
 import {Link} from 'react-router-dom'
 import './Menu.scss'
+import MenuItem from './MenuItem'
 
 type Props = {
 }
@@ -11,11 +12,11 @@ color:"white"
 const Menu = (props: Props) => {
     return (
         <>
-    <Button color="inherit"><Link style={linkStyle} to="/">Home</Link></Button>
-    <Button color="inherit">About</Button>
-    <Button color="inherit">Payment</Button>
-    <Button color="inherit">Shipping</Button>
-    <Button color="inherit"><Link className='cart-btn' to="/cart">Cart</Link></Button>
+    <MenuItem to="/">Home</MenuItem>
+            <MenuItem to="/about">About</MenuItem>
+            <MenuItem to="/payment">Payment</MenuItem>
+            <MenuItem to="/shipping">Shipping</MenuItem>
+            <MenuItem to="/cart">Cart</MenuItem>
     </>
     )
 }
