@@ -2,6 +2,9 @@ import {Card, CardContent, Button,CardActions} from '@mui/material'
 import './ProductListItem.scss'
 import { useState } from 'react'
 import Quantity from 'components/Quantity/Quantity'
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import { useAppSelector } from 'redux/hook';
 
 type Props = {
     id: number
@@ -34,10 +37,14 @@ const onDecrement = () => {
 
     setCount ((prevState) => prevState - 1)
 }
+const isLiked = useAppSelector((state) => state.productsLikeState[id])
 
     return (
     <Card variant="outlined" className="product">
         <CardContent>
+            <Button variant='outlined'>
+            {isLiked ? <FavoriteIcon/> : <FavoriteBorderIcon/>}
+            </Button>
             <div className='product-img'><img src={image} alt="fake shop" /> </div>
             <div className="product-title">{title}</div>
             <div className="product-desc">{descriptions}</div>
