@@ -7,51 +7,23 @@ import {Route,Routes} from 'react-router-dom'
 import {Container} from '@mui/system'
 import Home from "pages/Home/Home";
 import CartPage from "pages/Cart/CartPage";
-import { Button } from "@mui/material";
 import {omit} from 'lodash'
 
 type Props={}
 
-type ProductsInCart = {
-[id:number]:number}
-
 const App = (props: Props) => {
-const [productsInCart, setProductsInCart] = useState<ProductsInCart>({
-
-})
-
-const addProductToCart = (id:number,count:number) => {
-  setProductsInCart((prevState) => ({
-    ...prevState,
-    [id]: (prevState[id] || 0) + count,
-  }))
-}
-const removeProductFromCart = (id:number) => {
-  setProductsInCart((prevState)=> omit (prevState, [id]))
-} 
-
-const changeProductsQuantity = (id:number,count:number) => {
-  setProductsInCart((prevState)=>({
-    ...prevState,
-    [id]:count,
-  }))
-
-
-}
 
   return (
     <StyledEngineProvider injectFirst>
     <CssBaseline/>
-    <Header productsInCart={productsInCart} />
+    <Header  />
     <Container  sx={{
         padding: '60px 0',
     }}>
     <Routes>
-      <Route path='/' element={<Home addProductToCart={addProductToCart} />}/>
+      <Route path='/' element={<Home/>}/>
       <Route path="cart" element={
       <CartPage 
-      removeProductFromCart={removeProductFromCart}
-      changeProductsQuantity={changeProductsQuantity}
       />}/>
     </Routes>
     </Container>
