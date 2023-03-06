@@ -8,8 +8,7 @@ type cartType = {
 }
 
 export const initialState:cartType = {
-    1:3,
-    2:3,
+
 }
 
 export const cartSlice = createSlice({

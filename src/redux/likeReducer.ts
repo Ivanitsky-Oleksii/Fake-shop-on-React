@@ -6,8 +6,7 @@ type likeProductsType = {
 }
 
 export const initialState:likeProductsType = {
-    1:true,
-    4:true,
+    
 }
 
 export const likeSlice = createSlice({
