@@ -1,7 +1,5 @@
-import {Component} from 'react' 
-import {Button} from '@mui/material'
-import React, { useState, useEffect } from 'react';
-import { type } from 'os';
+import React, { useState } from 'react';
+
 
 
 const Home  = 
