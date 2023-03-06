@@ -1,5 +1,6 @@
 import { createReducer, createSlice } from "@reduxjs/toolkit";
-import likeReducer from "./likeReducer";
+import { omit } from "lodash";
+
 
 
 type cartType = {
@@ -18,10 +19,16 @@ export const cartSlice = createSlice({
     addProductToCart:(state,action) =>({
         ...state,
         [action.payload.id]: (state[action.payload.id] || 0) + action.payload.count
+    }),
+    removeProductFromCart:(state,action) => omit(state,action.payload),
+    
+    changeProductQuantity:(state,action) => ({
+        ...state,
+        [action.payload.id]:action.payload.count,
     })
 
     }
 })
 
-export const {addProductToCart} = cartSlice.actions
+export const {addProductToCart, removeProductFromCart,changeProductQuantity} = cartSlice.actions
 export default cartSlice.reducer
