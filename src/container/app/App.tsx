@@ -8,6 +8,7 @@ import {Container} from '@mui/system'
 import Home from "pages/Home/Home";
 import CartPage from "pages/Cart/CartPage";
 import {omit} from 'lodash'
+import CheckoutPage from "pages/Checkout/CheckoutPage";
 
 type Props={}
 
@@ -22,9 +23,8 @@ const App = (props: Props) => {
     }}>
     <Routes>
       <Route path='/' element={<Home/>}/>
-      <Route path="cart" element={
-      <CartPage 
-      />}/>
+      <Route path='checkout' element={<CheckoutPage/>}/>
+      <Route path="cart" element={<CartPage/>}/>
     </Routes>
     </Container>
     <Footer />
