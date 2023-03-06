@@ -50,7 +50,6 @@ const changeProductsQuantity = (id:number,count:number) => {
       <Route path='/' element={<Home addProductToCart={addProductToCart} />}/>
       <Route path="cart" element={
       <CartPage 
-      productsInCart={productsInCart}
       removeProductFromCart={removeProductFromCart}
       changeProductsQuantity={changeProductsQuantity}
       />}/>
