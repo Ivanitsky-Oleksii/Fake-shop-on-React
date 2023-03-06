@@ -23,5 +23,5 @@ export const cartSlice = createSlice({
     }
 })
 
-// export const {addLike,removeLike} = likeSlice.actions
+export const {addProductToCart} = cartSlice.actions
 export default cartSlice.reducer
