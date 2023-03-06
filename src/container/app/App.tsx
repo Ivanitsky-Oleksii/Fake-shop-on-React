@@ -2,38 +2,33 @@ import Header from "container/Header/Header"
 import Footer from "container/Footer/Footer"
 import CssBaseline from '@mui/material/CssBaseline';
 import { StyledEngineProvider } from '@mui/material/styles';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {Route,Routes} from 'react-router-dom'
 import {Container} from '@mui/system'
 import Home from "pages/Home/Home";
 import CartPage from "pages/Cart/CartPage";
+import {omit} from 'lodash'
+import CheckoutPage from "pages/Checkout/CheckoutPage";
+import { useAppDispatch } from "redux/hook";
+import { fetchProducts } from "redux/productsReducer";
 
 type Props={}
 
-type ProductsInCart = {
-[id:number]:number}
-
 const App = (props: Props) => {
-const [productsInCart, setProductsInCart] = useState<ProductsInCart>({
-// 1:5,
-2:5,
+const dispatch = useAppDispatch()
+useEffect(()=>{
+  dispatch(fetchProducts())
 })
-
-const addProductToCart = (id:number,count:number) => {
-  setProductsInCart((prevState) => ({
-    ...prevState,
-    [id]: (prevState[id] || 0) + count,
-  }))
-}
   return (
     <StyledEngineProvider injectFirst>
     <CssBaseline/>
-    <Header productsInCart={productsInCart} />
+    <Header  />
     <Container  sx={{
         padding: '60px 0',
     }}>
     <Routes>
-      <Route path='/' element={<Home addProductToCart={addProductToCart} />}/>
+      <Route path='/' element={<Home/>}/>
+      <Route path='checkout' element={<CheckoutPage/>}/>
       <Route path="cart" element={<CartPage/>}/>
     </Routes>
     </Container>

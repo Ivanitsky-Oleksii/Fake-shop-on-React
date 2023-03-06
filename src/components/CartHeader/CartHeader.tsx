@@ -1,25 +1,25 @@
-import productsArray, { getProductsObject, Product } from "utils/productsArray"
+import CartTotal from "components/CartTotal/CartTotal"
+import CartProductList from "components/CartProductList/CartProductList"
+import { useAppSelector } from "redux/hook"
 
 type Props = {
-    productsInCart:{
+    productsInCart?:{
         [id:number]:number
     }
-productsObject?:{
-    [id:number] : Product
-}
+
 }
 
-const CartHeader = ({productsInCart,productsObject = getProductsObject(productsArray)}: Props) => {
-    
+const CartHeader = () => {
+
+    const productsInCart = useAppSelector ((state)=>state.productsInCart)
     return (
-        <div>
-        {Object.keys(productsInCart).map((productId) => (
-        <div key={productId}>
-            {productsObject[parseInt(productId)].title}: {}
-            {productsInCart[parseInt(productId)]}
+<div>
+<CartProductList productsInCart={productsInCart}/>
+<CartTotal productsInCart={productsInCart}/>
+
+
         </div>
-        ))}
-        </div>
+        
     )
 } 
 export default CartHeader
